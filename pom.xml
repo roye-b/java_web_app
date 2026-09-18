@@ -26,6 +26,13 @@
             <version>4.12</version>
         </dependency>
 
+        <!-- JAXB API - required for newer Java versions -->
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>2.3.1</version>
+        </dependency>
+
         <!-- Spring Core -->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -77,7 +84,6 @@
         </dependency>
 
     </dependencies>
-
 
     <build>
 
@@ -131,65 +137,43 @@
                     <source>1.8</source>
                     <target>1.8</target>
                 </configuration>
-
             </plugin>
 
             <!-- Unit Tests -->
             <plugin>
-
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.19.1</version>
 
                 <configuration>
-
-                    <redirectTestOutputToFile>
-                        true
-                    </redirectTestOutputToFile>
+                    <redirectTestOutputToFile>true</redirectTestOutputToFile>
 
                     <reportsDirectory>
                         ${ship_test_res_loc}
                     </reportsDirectory>
-
                 </configuration>
 
                 <dependencies>
-
                     <dependency>
-
-                        <groupId>
-                            org.apache.maven.surefire
-                        </groupId>
-
-                        <artifactId>
-                            surefire-junit47
-                        </artifactId>
-
-                        <version>
-                            2.19.1
-                        </version>
-
+                        <groupId>org.apache.maven.surefire</groupId>
+                        <artifactId>surefire-junit47</artifactId>
+                        <version>2.19.1</version>
                     </dependency>
-
                 </dependencies>
-
             </plugin>
 
         </plugins>
 
     </build>
 
-
     <distributionManagement>
 
         <snapshotRepository>
-
             <id>nexus-snapshots</id>
 
             <url>
                 ${repository_url}
             </url>
-
         </snapshotRepository>
 
     </distributionManagement>
